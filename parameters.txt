@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+name=$0
+echo $name
+num_param=$#
+echo "Number of parameters is $num_param"
+param1=$1
+param2=$2
+param3=$3
+echo "The first three parameters are $1, $2, $3"

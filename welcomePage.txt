@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+read -p "Enter name: " name
+echo "Nice to meet you $name!"
+read -p "would you like to explore(Y or N)?" bool
+if [[ "$bool" == 'Y' || "$bool" == 'y' ]];
+then
+    echo "let's go!"
+else
+    echo "See you next time!"
+fi

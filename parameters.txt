@@ -8,3 +8,10 @@ param1=$1
 param2=$2
 param3=$3
 echo "The first three parameters are $1, $2, $3"
+
+echo "----Performing shift---"
+shift
+echo $num_param
+echo "First parameter after shifting is $1"
+echo "Second parameter after shifting is $2"
+echo "Third parameter after shifting is $3"

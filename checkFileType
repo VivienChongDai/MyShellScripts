@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+L=0
+F=0
+D=0
+TOTAL=0
+
+for NAME in *
+do
+  if [[ -L "$NAME" ]]
+  then
+  ((L++))
+  elif [[ -d "$NAME" ]]
+  then
+  ((D++))
+  else
+  ((F++))
+  fi
+done
+TOTAL=$((L+F+D))
+
+CURRDIR=$(pwd)
+echo "Current directory:                  $CURRDIR"
+echo "Total files and directories:        $TOTAL"
+echo "The number of regular files:        $F"
+echo "The number of symbolic files:       $L"
+echo "The number of directories:          $D"

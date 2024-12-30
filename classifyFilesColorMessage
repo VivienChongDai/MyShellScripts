@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+
+TOTAL=0
+for F in "$@"
+do
+  if file $F | grep "shell"
+  then
+     tput setaf 1
+     echo "File:          $F"
+     SIZE=$(wc -c < $F)
+     echo "Size:          $SIZE bytes"
+     echo
+     tput sgr0
+  elif file $F | grep "text"
+  then
+     tput setaf 6
+     echo "File:          $F"
+     SIZE=$(wc -c < $F)
+     echo "Size:          $SIZE bytes"
+     echo
+     tput sgr0
+  elif file $F | grep "executable"
+  then
+     tput setaf 11
+     echo "File:           $F"
+     SIZE=$(wc -c < $F)
+     echo "Size:           $SIZE bytes"
+     echo
+     tput sgr0
+  fi
+  TOTAL=$((TOTAL+SIZE))
+done
+  echo "Total size:    $TOTAL bytes"
+  echo

@@ -1,0 +1,46 @@
+ #!/usr/bin/bash
+
+echo "The current user is:                        $USER"
+cwd="$(pwd)"
+echo "The current directory is                    $cwd"
+if [[ "$cwd" == "$HOME" ]]
+then
+    IN_HOME_DIR="Yes"
+else
+    IN_HOME_DIR="No"
+fi
+echo "The current directory is your home?         $IN_HOME_DIR"
+du -sh ~
+date +%R
+
+echo "Your home directory permission is           $(ls -dl ~ | cut -c 1-10)"
+echo "The available memory is                     $(free | head -n 2 | tail -n 1 | tr -s " " | cut -d " " -f 7)"
+echo "Your compiler is                            $(gcc --version | head -n 1)"
+echo "System has been running up to               $(uptime | tr -s " " | cut -d " " -f 4 | cut -c 1-5) hours"
+echo "Your umask value for group and other are    $(umask -S | cut -d "," -f 2-3)"
+
+groupp=$(umask -S | cut -d "," -f 2 | cut -c 3-)
+if [[ $groupp == r ]]
+then
+  echo "Group has read permission"
+elif [[ $groupp == w ]]
+then
+  echo "Group has write permission"
+elif [[ $groupp == x ]]
+then
+  echo "Group has execute permission"
+elif [[ $groupp == rw ]]
+then
+  echo "Group has read and write permisson"
+elif [[ $groupp == rx ]]
+then
+  echo "Group has read and execute permission"
+elif [[ $groupp == wx ]]
+then
+  echo "Group has write and execute permission"
+elif [[ $group == rwx ]]
+then
+  echo "Group has read, write and execute permission"
+else
+  echo "Group has no permission"
+fi
